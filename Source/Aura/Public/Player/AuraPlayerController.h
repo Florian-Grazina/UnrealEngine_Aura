@@ -40,7 +40,7 @@ private:
 
 	void CursorTrace();
 
-	// hold a member variable to an interface
+	// hold a member variable of an interface
 	TScriptInterface<IEnemyInterface> LastActor;
 	TScriptInterface<IEnemyInterface> ThisActor;
 };
