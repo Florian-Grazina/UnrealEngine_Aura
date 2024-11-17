@@ -2,7 +2,6 @@
 
 
 #include "Player/AuraPlayerController.h"
-#include "Interaction/EnemyInterface.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 
@@ -10,40 +9,6 @@ AAuraPlayerController::AAuraPlayerController()
 {
 	// when an entity changes in the server, the clients will be notified
 	bReplicates = true;
-}
-
-void AAuraPlayerController::PlayerTick(float DeltaTime)
-{
-	Super::PlayerTick(DeltaTime);
-	CursorTrace();
-}
-
-
-void AAuraPlayerController::CursorTrace()
-{
-	FHitResult CursorHit;
-	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
-
-	if (!CursorHit.bBlockingHit) return;
-
-	LastActor = ThisActor;
-	ThisActor = CursorHit.GetActor();
-
-	/**
-	* Line trace from cursor. Several scenarios:
-	* 
-	* A. LastActor is null && ThisActor is null
-	*	- do nothing
-	* 
-	* B. LastActor is null && ThisActor is valid. We are hovering to the actor for the first time.
-	*	- Highlight ThisActor
-	* 
-	* C. LastActor is valid && ThisActor is null. We are unhovering to an actor
-	*	- UnHighlight LastActor
-	* 
-	* D. Both actors are valid, but LastActor != ThisActor
-	*	- UnHighlight LastActor, Highlight ThisActor
-	*/
 }
 
 void AAuraPlayerController::BeginPlay()
