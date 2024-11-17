@@ -5,9 +5,10 @@
 
 void AAuraEnemy::HighlightActor()
 {
-	UE_LOG(LogTemp, Warning, TEXT("HIGHLIGHTS"));
+	bHighlighted = true;
 }
 
 void AAuraEnemy::UnHighlightActor()
 {
+	bHighlighted = false;
 }
