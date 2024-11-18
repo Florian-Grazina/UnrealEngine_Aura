@@ -11,12 +11,22 @@ AAuraEnemy::AAuraEnemy()
 
 void AAuraEnemy::HighlightActor()
 {
-	SetHighlight(true);
+	USkeletalMeshComponent* MeshComp = GetMesh();
+
+	MeshComp->SetRenderCustomDepth(true);
+	MeshComp->SetCustomDepthStencilValue(CUSTOM_DEPTH_RED);
+	Weapon->SetRenderCustomDepth(true);
+	Weapon->SetCustomDepthStencilValue(stencilValue);
 }
 
 void AAuraEnemy::UnHighlightActor()
 {
-	SetHighlight(false);
+	USkeletalMeshComponent* MeshComp = GetMesh();
+
+	MeshComp->SetRenderCustomDepth(value);
+	MeshComp->SetCustomDepthStencilValue(CUSTOM_DEPTH_RED);
+	Weapon->SetRenderCustomDepth(value);
+	Weapon->SetCustomDepthStencilValue(stencilValue);
 }
 
 void AAuraEnemy::SetHighlight(bool value)
