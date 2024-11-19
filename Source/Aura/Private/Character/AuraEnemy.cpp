@@ -24,7 +24,6 @@ void AAuraEnemy::SetHighlight(bool value)
 	USkeletalMeshComponent* MeshComp = GetMesh();
 
 	int stencilValue = value? CUSTOM_DEPTH_RED : 0;
-
 	MeshComp->SetRenderCustomDepth(value);
 	MeshComp->SetCustomDepthStencilValue(stencilValue);
 	Weapon->SetRenderCustomDepth(value);
